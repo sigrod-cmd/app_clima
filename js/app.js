@@ -2,10 +2,11 @@ window.addEventListener(`load`, () => {
     let lon;
     let lat;
 
-    let temperaturaValor = document.getElementById("temp-valor");
+    //capturo elementos del DOOM
+    let temperaturaValor = document.getElementById("temperatura-valor");
     let sensacionTerm = document.getElementById("sensacion-termica");
-    let tempHora = document.getElementById("hora");
     let precipitaciones = document.getElementById("lluvia");
+    let temperaturaDescription = document.getElementById("desc")
 
     let ubicacion = document.getElementById("ubicacion");
     let iconAnimado = document.getElementById("icon-animado");
@@ -19,7 +20,7 @@ window.addEventListener(`load`, () => {
             lon = posicion.coords.longitude;
             lat = posicion.coords.latitude;
 
-            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,apparent_temperature,precipitation,weathercode,windspeed_10m&current_weather=true&timezone=auto&start_date=2022-10-30&end_date=2022-11-05`;
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=sp&units=metric&appid=9d30f97fdf83aa6eb5ad7447ba04b150`;
 
             console.log(url);
 
@@ -28,41 +29,20 @@ window.addEventListener(`load`, () => {
                     return response.json();
                 })
                 .then((data) => {
-                    let temp = Math.round(data.current_weather.temperature);
-                    temperaturaValor.textContent = `${temp} ºC`;
+                    let temp = Math.round(data.main.temp);
+                    temperaturaValor.textContent = `${temp} º`;
 
-                    //let hora = data.current_weather.time;
-                    //tempHora.textContent = `${hora}`;
+                    console.log(data.weather[0].description)
 
-                    ubicacion.textContent = data.timezone;
+                    let desc = data.weather[0].description
+                    temperaturaDescription.textContent = `${desc}`
+                  
+                    console.log(data.name)
+                    ubicacion.textContent = (data.name)
+                    
 
-                    vientoVelocidad.textContent = `${data.current_weather.windspeed} km/h`;
-
-                    let clima = data.current_weather.weathercode;
-                    //console.log(clima);
-
-                    switch (clima) {
-                        case 0:
-                            iconAnimado.src = `\multimedia\animated\day.svg`;
-                            break;
-                        case 1:
-                            iconAnimado.src = `/multimedia/animated/cloudy.svg`;
-                            break;
-                        case 2:
-                            iconAnimado.src = `/multimedia/animated/cloudy.svg`;
-                            break;
-                        case 3:
-                            iconAnimado.src = `/multimedia/animated/cloudy.svg`;
-                            break;
-                        case 61:
-                            iconAnimado.src = `/multimedia/animated/cloudy.svg`;
-                            break;
-
-                        default:
-                            break;
-                    }
-
-                    //console.log(data.current_weather.);
+                    
+                    
                 })
                 .catch((error) => {
                     console.log(error);
