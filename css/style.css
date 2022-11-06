@@ -18,9 +18,7 @@ body {
     margin-bottom: 50px;
 }
 
-#encabezado {
-    color: aliceblue;
-}
+
 
 #desc {
     margin-top: 0;
@@ -38,36 +36,16 @@ body {
     margin-top: 30px;
 }
 
-#sensacion-termica {
-
-    color: aliceblue;
-
-}
-
-#termica {
-
-    color: aliceblue;
-
-}
-
-#max {
-
-    color: aliceblue;
-
-}
-
-#min {
-
-    color: aliceblue;
-
-}
-
-#viento-velocidad {
+#viento-velocidad, #humedad, #min, #max, #termica, #sensacion-termica, #encabezado, .dia-1, .dia-2, .dia-3, .dia-4, .dia-5, .dia-6  {
 
     color: aliceblue;
 }
 
-#humedad {
-
+#proximo {
     color: aliceblue;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
+
+
+
