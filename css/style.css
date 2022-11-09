@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   
 
 }
 
@@ -15,9 +16,15 @@ body {
 
 #encabezado {
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
 }
 
+#dia-actual {
+    padding: 0;
+    margin-top: 0px;
+    text-align:start;
+    color:aliceblue;
+}
 
 
 #desc {
@@ -45,6 +52,16 @@ body {
     color: aliceblue;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+ .dia-1, .dia-2, .dia-3, .dia-4, .dia-5, .dia-6 {
+     
+  border-radius: 1rem;  
+  padding: 5px;
+  box-shadow:
+       inset 0 -3em 3em #141E30,
+             0 0  0 2px #243B55,
+             0.1em 0.1em 1em rgba(0,0,0,0.3);
 }
 
 

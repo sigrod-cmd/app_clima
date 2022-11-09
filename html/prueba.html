@@ -1,52 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App1_Tiempo</title>
-    <link rel="stylesheet" href="/css/style.css">
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> 
-    </head>
-
-<body class="day">
-
-    <div class="container-fluid " id="container">
-        <div class="row">
-            <div class="imputTemp">
-                <form action="" id="search_submit" class="search_submit">
-                    <input type="text" class="search" id="search" placeholder="Introduce tu Ciudad">
-                    <button type="submit"></button>
-                </form>  
-        </div>
-        </div>
-        <div class="row">
-            <div class="imputTemp_number">
-                <div class="imputTemp_Celsius" id="Number">15</div>
-                <div class="imputTemp_symbol">ºC</div>
-            </div>
-
-            <div id="weatherIcon" ><img src="/multimedia/animated/cloudy-night-1.svg" alt=""></div>
-            <div class="inputTemp_description" id="description"> hfhd</div>
-        </div>
-
-        <div id="location">
-            <div class="location-city" id="timezone">ushuaia</div>
-            <div class="location-date" id="date" >10/10/2022</div>
-        </div>
-
-        <div  class="weather">
-                <div class="tiempo-max"><small>Max</small><span id="max">ºC</span></div>
-                <div class="tiempo-min"><small>Min</small><span id="min">ºC</span></div>
-        </div>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="dia-actual">
+       <div id="dia-1"></div>
     </div>
-    
 
 
-    <script src="/js/app1.js"></script>
-    
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="/js/app2.js"></script>
 </body>
-
 </html>

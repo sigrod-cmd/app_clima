@@ -2,6 +2,8 @@ window.addEventListener(`load`, () => {
     let lon;
     let lat;
 
+    
+
     //capturo elementos del DOOM
     // Tarjeta dia_Actual
     let ubicacion = document.getElementById("ubicacion");
@@ -12,6 +14,7 @@ window.addEventListener(`load`, () => {
     let temperaturaMin = document.getElementById("min");
     let temperaturaMax = document.getElementById("max");
     let vientoVelocidad = document.getElementById("viento-velocidad");
+    let actual = document.getElementById("dia-actual");
 
     //Dia_1
     let iconAnimado_1 = document.getElementById("icon-animado-1")
@@ -20,6 +23,7 @@ window.addEventListener(`load`, () => {
     let temperaturaMax_1 = document.getElementById("max-1");
     let Lluvia_1 = document.getElementById("lluvia-1");
     let vientoVelocidad_1 = document.getElementById("viento-velocidad-1");
+    let fecha_dia_1 = document.getElementById("dia1");
 
     //Dia_2
     let iconAnimado_2 = document.getElementById("icon-animado-2")
@@ -27,6 +31,7 @@ window.addEventListener(`load`, () => {
     let temperaturaMin_2 = document.getElementById("min-2");
     let temperaturaMax_2 = document.getElementById("max-2");
     let vientoVelocidad_2 = document.getElementById("viento-velocidad-2");
+    let fecha_dia_2 = document.getElementById("dia2");
 
     //Dia_3
     let iconAnimado_3 = document.getElementById("icon-animado-3")
@@ -34,6 +39,7 @@ window.addEventListener(`load`, () => {
     let temperaturaMin_3 = document.getElementById("min-3");
     let temperaturaMax_3 = document.getElementById("max-3");
     let vientoVelocidad_3 = document.getElementById("viento-velocidad-3");
+    let fecha_dia_3 = document.getElementById("dia3");
 
     //Dia_4
     let iconAnimado_4 = document.getElementById("icon-animado-4")
@@ -41,6 +47,7 @@ window.addEventListener(`load`, () => {
     let temperaturaMin_4 = document.getElementById("min-4");
     let temperaturaMax_4 = document.getElementById("max-4");
     let vientoVelocidad_4 = document.getElementById("viento-velocidad-4");
+    let fecha_dia_4 = document.getElementById("dia4");
 
     //Dia_5
     let iconAnimado_5 = document.getElementById("icon-animado-5")
@@ -48,6 +55,7 @@ window.addEventListener(`load`, () => {
     let temperaturaMin_5 = document.getElementById("min-5");
     let temperaturaMax_5 = document.getElementById("max-5");
     let vientoVelocidad_5 = document.getElementById("viento-velocidad-5");
+    let fecha_dia_5 = document.getElementById("dia5");
 
     //Dia_6
     let iconAnimado_6 = document.getElementById("icon-animado-6")
@@ -55,6 +63,7 @@ window.addEventListener(`load`, () => {
     let temperaturaMin_6 = document.getElementById("min-6");
     let temperaturaMax_6 = document.getElementById("max-6");
     let vientoVelocidad_6 = document.getElementById("viento-velocidad-6");
+    let fecha_dia_6 = document.getElementById("dia6");
 
 
 
@@ -64,6 +73,15 @@ window.addEventListener(`load`, () => {
         navigator.geolocation.getCurrentPosition((posicion) => {
             lon = posicion.coords.longitude;
             lat = posicion.coords.latitude;
+
+            const diaActual = () => {
+
+                let fechaActual = new Date();
+                let diaSemana = fechaActual.getDay();           
+                let semana = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+
+                actual.textContent = semana[diaSemana];  
+             }
 
             const dia_actual = (data_temp, data_timezone, windspeed, weathercode, sensacion_term_max, t_max, t_min) => {
 
@@ -83,6 +101,8 @@ window.addEventListener(`load`, () => {
 
                 let tmin = Math.round(t_min);
                 temperaturaMin.textContent = `min ${tmin}º`;
+
+                diaActual();
 
                 switch (weathercode) {
                     case 0:
