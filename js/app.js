@@ -1,3 +1,4 @@
+//const moment = require("moment/moment");
 
 
 window.addEventListener(`load`, () => {
@@ -19,6 +20,8 @@ window.addEventListener(`load`, () => {
     let actual = document.getElementById("dia-actual");
     let minutoA = document.getElementById("minutos");
     let horaA = document.getElementById("hora");
+    let amanecer=document.getElementById("amanecer");
+    let atardecer=document.getElementById("atardecer");
 
     //Dia_1
     let iconAnimado_1 = document.getElementById("icon-animado-1")
@@ -78,24 +81,26 @@ window.addEventListener(`load`, () => {
             lon = posicion.coords.longitude;
             lat = posicion.coords.latitude;
 
-            const diaActual = () => {
-
-                
-
-
+            const diaActual = (day,semana) => {
                 let fechaActual = new Date();
                 let hora_ = fechaActual.getHours();
                 let minutos_ = fechaActual.getMinutes();
                 let diaSemana = fechaActual.getDay();           
-                let semana = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+                // let semana = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
 
-                actual.textContent = semana[diaSemana];  
+                actual.textContent = semana[moment(day[0]).day()];  
                 minutoA.textContent = minutos_
                 horaA.textContent = hora_
 
             }
 
-            const dia_actual = (data_temp, data_timezone, windspeed, weathercode, sensacion_term_max, t_max, t_min) => {
+            const dia_actual = (day,semana,sunrise,sunset,data_temp, data_timezone, windspeed, weathercode, sensacion_term_max, t_max, t_min) => {
+               
+                let amanece=moment(sunrise).format('hh:mm');
+                amanecer.textContent=amanece;
+
+                let atardece=moment(sunset).format('hh:mm');
+                atardecer.textContent=atardece;
 
                 let temp = Math.round(data_temp);
                 temperaturaValor.textContent = `${temp}º`;
@@ -114,7 +119,7 @@ window.addEventListener(`load`, () => {
                 let tmin = Math.round(t_min);
                 temperaturaMin.textContent = `${tmin}º`;
 
-                diaActual();
+                diaActual(day,semana);
 
                 switch (weathercode) {
                     case 0:
@@ -193,8 +198,9 @@ window.addEventListener(`load`, () => {
                 }
 
             }
-
-            const dia_1 = (code_weather, t_max, t_min, windspeed,) => {
+            //arreglo global + objeto data.daily.time ingreso por parametro a la funcion
+            let semana = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+            const dia_1 = (code_weather,day,semana, t_max, t_min, windspeed,) => {
 
                 switch (code_weather) {
                     case 0:
@@ -265,6 +271,9 @@ window.addEventListener(`load`, () => {
                     default:
                         break;
                 }
+                let dia=semana[moment(day[1]).day()]
+                fecha_dia_1.textContent=dia;     
+
                 let speed = Math.round(windspeed);
                 vientoVelocidad_1.textContent = `${speed} Km/h`;
 
@@ -274,10 +283,11 @@ window.addEventListener(`load`, () => {
                 let tmin = Math.round(t_min);
                 temperaturaMin_1.textContent = `${tmin}º`;
 
+               
 
             }
 
-            const dia_2 = (code_weather, t_max, t_min, windspeed,) => {
+            const dia_2 = (code_weather,day,semana, t_max, t_min, windspeed,) => {
 
                 switch (code_weather) {
                     case 0:
@@ -348,6 +358,9 @@ window.addEventListener(`load`, () => {
                     default:
                         break;
                 }
+                let dia=semana[moment(day[2]).day()]
+                fecha_dia_2.textContent=dia;  
+
                 let speed = Math.round(windspeed);
                 vientoVelocidad_2.textContent = `${speed} Km/h`;
 
@@ -360,7 +373,7 @@ window.addEventListener(`load`, () => {
 
             }
 
-            const dia_3 = (code_weather, t_max, t_min, windspeed,) => {
+            const dia_3 = (code_weather,day,semana, t_max, t_min, windspeed,) => {
 
                 switch (code_weather) {
                     case 0:
@@ -431,6 +444,9 @@ window.addEventListener(`load`, () => {
                     default:
                         break;
                 }
+                let dia=semana[moment(day[3]).day()]
+                fecha_dia_3.textContent=dia;  
+
                 let speed = Math.round(windspeed);
                 vientoVelocidad_3.textContent = `${speed} Km/h`;
 
@@ -443,7 +459,7 @@ window.addEventListener(`load`, () => {
 
             }
 
-            const dia_4 = (code_weather, t_max, t_min, windspeed,) => {
+            const dia_4 = (code_weather,day,semana, t_max, t_min, windspeed,) => {
 
                 switch (code_weather) {
                     case 0:
@@ -514,6 +530,9 @@ window.addEventListener(`load`, () => {
                     default:
                         break;
                 }
+                let dia=semana[moment(day[4]).day()]
+                fecha_dia_4.textContent=dia;  
+
                 let speed = Math.round(windspeed);
                 vientoVelocidad_4.textContent = `${speed} Km/h`;
 
@@ -526,7 +545,7 @@ window.addEventListener(`load`, () => {
 
             }
 
-            const dia_5 = (code_weather, t_max, t_min, windspeed,) => {
+            const dia_5 = (code_weather,day,semana, t_max, t_min, windspeed,) => {
 
                 switch (code_weather) {
                     case 0:
@@ -597,6 +616,9 @@ window.addEventListener(`load`, () => {
                     default:
                         break;
                 }
+                let dia=semana[moment(day[5]).day()]
+                fecha_dia_5.textContent=dia;  
+
                 let speed = Math.round(windspeed);
                 vientoVelocidad_5.textContent = `${speed} Km/h`;
 
@@ -609,7 +631,7 @@ window.addEventListener(`load`, () => {
 
             }
 
-            const dia_6 = (code_weather, t_max, t_min, windspeed,) => {
+            const dia_6 = (code_weather,day,semana, t_max, t_min, windspeed,) => {
 
                 switch (code_weather) {
                     case 0:
@@ -680,6 +702,9 @@ window.addEventListener(`load`, () => {
                     default:
                         break;
                 }
+                let dia=semana[moment(day[6]).day()]
+                fecha_dia_6.textContent=dia;  
+
                 let speed = Math.round(windspeed);
                 vientoVelocidad_6.textContent = `${speed} Km/h`;
 
@@ -700,19 +725,19 @@ window.addEventListener(`load`, () => {
                 })
                 .then((data) => {
 
-                    dia_actual(data.current_weather.temperature, data.timezone, data.current_weather.windspeed, data.current_weather.weathercode, data.daily.apparent_temperature_max[0], data.daily.temperature_2m_max[0], data.daily.temperature_2m_min[0])
+                    dia_actual(data.daily.time,semana,data.daily.sunrise[0],data.daily.sunset[0],data.current_weather.temperature, data.timezone, data.current_weather.windspeed, data.current_weather.weathercode, data.daily.apparent_temperature_max[0], data.daily.temperature_2m_max[0], data.daily.temperature_2m_min[0])
 
-                    dia_1(data.daily.weathercode[1], data.daily.temperature_2m_max[1], data.daily.temperature_2m_min[1], data.daily.windspeed_10m_max[1], data.daily.precipitation_sum[1])
+                    dia_1(data.daily.weathercode[1],data.daily.time,semana, data.daily.temperature_2m_max[1], data.daily.temperature_2m_min[1], data.daily.windspeed_10m_max[1], data.daily.precipitation_sum[1])
 
-                    dia_2(data.daily.weathercode[2], data.daily.temperature_2m_max[2], data.daily.temperature_2m_min[2], data.daily.windspeed_10m_max[2], data.daily.precipitation_sum[2])
+                    dia_2(data.daily.weathercode[2],data.daily.time,semana, data.daily.temperature_2m_max[2], data.daily.temperature_2m_min[2], data.daily.windspeed_10m_max[2], data.daily.precipitation_sum[2])
 
-                    dia_3(data.daily.weathercode[3], data.daily.temperature_2m_max[3], data.daily.temperature_2m_min[3], data.daily.windspeed_10m_max[3], data.daily.precipitation_sum[3])
+                    dia_3(data.daily.weathercode[3],data.daily.time,semana, data.daily.temperature_2m_max[3], data.daily.temperature_2m_min[3], data.daily.windspeed_10m_max[3], data.daily.precipitation_sum[3])
 
-                    dia_4(data.daily.weathercode[4], data.daily.temperature_2m_max[4], data.daily.temperature_2m_min[4], data.daily.windspeed_10m_max[4], data.daily.precipitation_sum[4])
+                    dia_4(data.daily.weathercode[4],data.daily.time,semana, data.daily.temperature_2m_max[4], data.daily.temperature_2m_min[4], data.daily.windspeed_10m_max[4], data.daily.precipitation_sum[4])
 
-                    dia_5(data.daily.weathercode[5], data.daily.temperature_2m_max[5], data.daily.temperature_2m_min[5], data.daily.windspeed_10m_max[5], data.daily.precipitation_sum[5])
+                    dia_5(data.daily.weathercode[5],data.daily.time,semana, data.daily.temperature_2m_max[5], data.daily.temperature_2m_min[5], data.daily.windspeed_10m_max[5], data.daily.precipitation_sum[5])
 
-                    dia_6(data.daily.weathercode[6], data.daily.temperature_2m_max[6], data.daily.temperature_2m_min[6], data.daily.windspeed_10m_max[6], data.daily.precipitation_sum[6])
+                    dia_6(data.daily.weathercode[6],data.daily.time,semana, data.daily.temperature_2m_max[6], data.daily.temperature_2m_min[6], data.daily.windspeed_10m_max[6], data.daily.precipitation_sum[6])
 
                 })
                 .catch((error) => {
