@@ -8,61 +8,71 @@
     <title>Weather</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/bootstrap-5.2.2-dist/bootstrap-5.2.2-dist/css/bootstrap.min.css">
-   
+
 
 </head>
 
 <body>
     <div class="container-md text-center">
 
-        <div class="row align-items-center justify-content-center">
-            <div class="col ">
+        <div class="row justify-content-center align-items-center">    
+            <H1 id="encabezado">CLIMA</H1>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-8 text-start">
+                <span id="temperatura-valor"></span>
                 <h4 id="ubicacion"></h4>
-            </div>
-        </div>
-
-        <div class="row justify-content-center  text-start ">
-            <div class="col">
-                <h1 id="encabezado">Pronostico Diario</h1>
-                <h3 id="dia-actual"></h3>
-            </div>
-        </div>
-
-        <div class="row align-items-center justify-content-center ">
-            <div class="col">
-                <div class="caja1">
-                    <img id="icon-animado" src="" alt="" width="300" height="300">
-                </div>
-            </div>
-        </div>
-
-        <div class="row align-items-center justify-content-center">
-            <div class="col">
-                <div class="caja2">
-                    
-                    <h1 id="desc"></h1>
-                    <h1 id="temperatura-valor"></h1>
+                <div>
+                    <br>
+                    <img src="/multimedia/animated/wind.svg" alt="" width="40" height="40">
+                    <h6 id="viento-velocidad"></h6>
                     <span id="max"></span>
                     <span id="min"></span>
-                    <span id="termica">Sensación Termica Max </span>
+                    <span id="termica">Sensación termica </span>
                     <span id="sensacion-termica"></span>
+                    <br>
+                    <span id="dia-actual"></span>
+                    <span id="coma">,</span>
+                    <span ></span>
+                    <span id="hora"></span>
+                    <span id="puntos">:</span>
+                    <span id="minutos"></span>
+                </div>
+            </div>
+
+            <div class="col text-end">
+                <div class="caja1">
+                    <img id="icon-animado" src="" alt="" width="150" height="150">
+                    <h7 id="desc"></h7>
                 </div>
             </div>
         </div>
 
-        <div class="row align-items-center justify-content-center">
+        <!-- amanecer / anochecer -->
+        <div  class="row justify-content-center align-items-center " id="amanecer_atardecer" >
+           
             <div class="col">
-                <div id="caja3">
-                    
-                    <img src="/multimedia/animated/wind.svg" alt="">
-                    <h5 id="viento-velocidad"></h5>
-                </div>
+                <h4>Amanecer</h4>
+                <p id="amanecer"></p>
+                <img src="/multimedia/animated/day.svg" alt="" width="100" height="100">
+            </div>
+
+            <div class="col" >
+                <h4>Atardecer</h4>
+                <p id="atardecer"></p>
+                <img src="/multimedia/animated/night.svg" alt="" width="100" height="100">
+            
             </div>
         </div>
+
+        <!-- Aqui comienzan las tarjetas de pronostico diario -->
         <div class="row align-items-center justify-content-center">
+
             <div>
                 <h1 id="proximo">Pronostico Proximos 6 dias</h1>
             </div>
+
             <div class="col ">
                 <div class="dia-1">
                     <h4 id="dia1"></h4>
@@ -75,6 +85,7 @@
                     <h5 id="viento-velocidad-1"></h5>
                 </div>
             </div>
+
             <div class="col">
                 <div class="dia-2">
                     <h4 id="dia2"></h4>
@@ -87,6 +98,7 @@
                     <h5 id="viento-velocidad-2"></h5>
                 </div>
             </div>
+
             <div class="col">
                 <div class="dia-3">
                     <h4 id="dia3"></h4>
@@ -99,6 +111,7 @@
                     <h5 id="viento-velocidad-3"></h5>
                 </div>
             </div>
+
             <div class="col">
                 <div class="dia-4">
                     <h4 id="dia4"></h4>
@@ -111,6 +124,7 @@
                     <h5 id="viento-velocidad-4"></h5>
                 </div>
             </div>
+
             <div class="col">
                 <div class="dia-5">
                     <h4 id="dia5"></h4>
@@ -123,6 +137,7 @@
                     <h5 id="viento-velocidad-5"></h5>
                 </div>
             </div>
+
             <div class="col">
                 <div class="dia-6">
                     <h4 id="dia6"></h4>
@@ -135,17 +150,16 @@
                     <h5 id="viento-velocidad-6"></h5>
                 </div>
             </div>
-        </div>
-        
 
+        </div>
 
     </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="/bootstrap-5.2.2-dist/bootstrap-5.2.2-dist/js/bootstrap.min.js"></script>
     <script src="/js/app.js"></script>
-    
+
 </body>
 
 </html>

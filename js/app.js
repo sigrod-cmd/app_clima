@@ -1,3 +1,5 @@
+
+
 window.addEventListener(`load`, () => {
     let lon;
     let lat;
@@ -15,6 +17,8 @@ window.addEventListener(`load`, () => {
     let temperaturaMax = document.getElementById("max");
     let vientoVelocidad = document.getElementById("viento-velocidad");
     let actual = document.getElementById("dia-actual");
+    let minutoA = document.getElementById("minutos");
+    let horaA = document.getElementById("hora");
 
     //Dia_1
     let iconAnimado_1 = document.getElementById("icon-animado-1")
@@ -76,12 +80,20 @@ window.addEventListener(`load`, () => {
 
             const diaActual = () => {
 
+                
+
+
                 let fechaActual = new Date();
+                let hora_ = fechaActual.getHours();
+                let minutos_ = fechaActual.getMinutes();
                 let diaSemana = fechaActual.getDay();           
                 let semana = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
 
                 actual.textContent = semana[diaSemana];  
-             }
+                minutoA.textContent = minutos_
+                horaA.textContent = hora_
+
+            }
 
             const dia_actual = (data_temp, data_timezone, windspeed, weathercode, sensacion_term_max, t_max, t_min) => {
 
@@ -97,10 +109,10 @@ window.addEventListener(`load`, () => {
                 sensacionTerm.textContent = `${senc}º`
 
                 let tmax = Math.round(t_max);
-                temperaturaMax.textContent = `max ${tmax}º/`;
+                temperaturaMax.textContent = `${tmax}º/`;
 
                 let tmin = Math.round(t_min);
-                temperaturaMin.textContent = `min ${tmin}º`;
+                temperaturaMin.textContent = `${tmin}º`;
 
                 diaActual();
 
@@ -257,10 +269,10 @@ window.addEventListener(`load`, () => {
                 vientoVelocidad_1.textContent = `${speed} Km/h`;
 
                 let tmax = Math.round(t_max);
-                temperaturaMax_1.textContent = `max ${tmax}º/`;
+                temperaturaMax_1.textContent = `${tmax}º/`;
 
                 let tmin = Math.round(t_min);
-                temperaturaMin_1.textContent = `min ${tmin}º`;
+                temperaturaMin_1.textContent = `${tmin}º`;
 
 
             }
@@ -340,10 +352,10 @@ window.addEventListener(`load`, () => {
                 vientoVelocidad_2.textContent = `${speed} Km/h`;
 
                 let tmax = Math.round(t_max);
-                temperaturaMax_2.textContent = `max ${tmax}º/`;
+                temperaturaMax_2.textContent = `${tmax}º/`;
 
                 let tmin = Math.round(t_min);
-                temperaturaMin_2.textContent = `min ${tmin}º`;
+                temperaturaMin_2.textContent = `${tmin}º`;
 
 
             }
@@ -423,10 +435,10 @@ window.addEventListener(`load`, () => {
                 vientoVelocidad_3.textContent = `${speed} Km/h`;
 
                 let tmax = Math.round(t_max);
-                temperaturaMax_3.textContent = `max ${tmax}º/`;
+                temperaturaMax_3.textContent = `${tmax}º/`;
 
                 let tmin = Math.round(t_min);
-                temperaturaMin_3.textContent = `min ${tmin}º`;
+                temperaturaMin_3.textContent = `${tmin}º`;
 
 
             }
@@ -506,10 +518,10 @@ window.addEventListener(`load`, () => {
                 vientoVelocidad_4.textContent = `${speed} Km/h`;
 
                 let tmax = Math.round(t_max);
-                temperaturaMax_4.textContent = `max ${tmax}º/`;
+                temperaturaMax_4.textContent = `${tmax}º/`;
 
                 let tmin = Math.round(t_min);
-                temperaturaMin_4.textContent = `min ${tmin}º`;
+                temperaturaMin_4.textContent = `${tmin}º`;
 
 
             }
@@ -589,10 +601,10 @@ window.addEventListener(`load`, () => {
                 vientoVelocidad_5.textContent = `${speed} Km/h`;
 
                 let tmax = Math.round(t_max);
-                temperaturaMax_5.textContent = `max ${tmax}º/`;
+                temperaturaMax_5.textContent = `${tmax}º/`;
 
                 let tmin = Math.round(t_min);
-                temperaturaMin_5.textContent = `min ${tmin}º`;
+                temperaturaMin_5.textContent = `${tmin}º`;
 
 
             }
@@ -672,15 +684,15 @@ window.addEventListener(`load`, () => {
                 vientoVelocidad_6.textContent = `${speed} Km/h`;
 
                 let tmax = Math.round(t_max);
-                temperaturaMax_6.textContent = `max ${tmax}º/`;
+                temperaturaMax_6.textContent = `${tmax}º/`;
 
                 let tmin = Math.round(t_min);
-                temperaturaMin_6.textContent = `min ${tmin}º`;
+                temperaturaMin_6.textContent = `${tmin}º`;
 
 
             }
 
-            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,apparent_temperature,precipitation,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum,windspeed_10m_max&current_weather=true&timezone=auto`;
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,apparent_temperature,precipitation,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum,windspeed_10m_max,sunrise,sunset&current_weather=true&timezone=auto`;
 
             fetch(url)
                 .then((response) => {

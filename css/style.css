@@ -16,7 +16,7 @@ body {
 
 #encabezado {
     margin-top: 50px;
-    margin-bottom: 0px;
+    margin-bottom: 50px;
 }
 
 #dia-actual {
@@ -30,20 +30,21 @@ body {
 #desc {
     margin-top: 0;
     color: aliceblue;
-    font-size: 30px;
+   
 }
 
 #temperatura-valor {
+    margin-bottom: 0px;
+    padding: 0px;
     color: aliceblue;
     font-size: 120px;
 }
 
 #ubicacion {
     color: aliceblue;
-    margin-top: 30px;
 }
 
-#viento-velocidad, #humedad, #min, #max, #termica, #sensacion-termica, #encabezado, .dia-1, .dia-2, .dia-3, .dia-4, .dia-5, .dia-6  {
+#viento-velocidad, #humedad, #min, #max, #termica, #sensacion-termica, #encabezado, .dia-1, .dia-2, .dia-3, .dia-4, .dia-5, .dia-6, #amanecer_atardecer, #hora, #minutos, #puntos, #coma {
 
     color: aliceblue;
 }
@@ -54,16 +55,24 @@ body {
     margin-bottom: 50px;
 }
 
- .dia-1, .dia-2, .dia-3, .dia-4, .dia-5, .dia-6 {
-     
+ .dia-1, .dia-2, .dia-3, .dia-4, .dia-5, .dia-6, #amanecer_atardecer {
   border-radius: 1rem;  
-  padding: 5px;
+  padding: 3x;
   box-shadow:
        inset 0 -3em 3em #141E30,
              0 0  0 2px #243B55,
              0.1em 0.1em 1em rgba(0,0,0,0.3);
 margin-bottom: 30px;
 }
+
+.caja1 {
+    margin-top: 30px;
+}
+
+#amanecer_atardecer {
+    margin-top: 55px;
+}
+
 
 
 
