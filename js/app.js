@@ -115,17 +115,15 @@ window.addEventListener(`load`, () => {
                 switch (weathercode) {
                     case 0:
                         iconAnimado.src = "/multimedia/animated/day.svg";
-                        temperaturaDescription.textContent = "Cielo Despejado";
+                        temperaturaDescription.textContent = "Despejado";
                         break;
                     case 1:
-                        iconAnimado.src = "/multimedia/animated/cloudy.svg";
-                        temperaturaDescription.textContent =
-                            "Mayormente despejado";
+                        iconAnimado.src = "/multimedia/animated/day.svg";
+                        temperaturaDescription.textContent ="Despejado";
                         break;
                     case 2:
                         iconAnimado.src = "/multimedia/animated/cloudy.svg";
-                        temperaturaDescription.textContent =
-                            "Parcialmente Nublado";
+                        temperaturaDescription.textContent ="Parcialmente Nublado";
                         break;
                     case 3:
                         iconAnimado.src = "/multimedia/animated/cloudy.svg";
@@ -137,34 +135,31 @@ window.addEventListener(`load`, () => {
                         break;
                     case 53:
                         iconAnimado.src = "/multimedia/animated/rainy-5.svg";
-                        temperaturaDescription.textContent =
-                            "Llovizna moderada";
+                        temperaturaDescription.textContent ="Llovizna moderada";
                         break;
                     case 55:
                         iconAnimado.src = "/multimedia/animated/rainy-5.svg";
                         temperaturaDescription.textContent = "Llovizna intensa";
                         break;
                     case 61:
-                        iconAnimado.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription.textContent = "Lluvia Leve";
+                        iconAnimado.src = "/multimedia/animated/rainy-4.svg";
+                        temperaturaDescription.textContent = "Lluvias Leves";
                         break;
                     case 63:
-                        iconAnimado.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription.textContent = "Lluvia Moderada";
+                        iconAnimado.src = "/multimedia/animated/rainy-5.svg";
+                        temperaturaDescription.textContent = "Lluvias Moderadas";
                         break;
                     case 65:
                         iconAnimado.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription.textContent = "Lluvia Fuerte";
+                        temperaturaDescription.textContent = "Lluvias Fuertes";
                         break;
                     case 66:
                         iconAnimado.src = "/multimedia/animated/rainy-7.svg";
-                        temperaturaDescription.textContent =
-                            "Lluvia Helada Ligera";
+                        temperaturaDescription.textContent ="Lluvia Helada Ligera";
                         break;
                     case 67:
                         iconAnimado.src = "/multimedia/animated/rainy-7.svg";
-                        temperaturaDescription.textContent =
-                            "Lluvia Helada Pesada";
+                        temperaturaDescription.textContent ="Lluvia Helada Pesada";
                         break;
                     case 71:
                         iconAnimado.src = "/multimedia/animated/snowy-4.svg";
@@ -178,10 +173,21 @@ window.addEventListener(`load`, () => {
                         iconAnimado.src = "/multimedia/animated/snowy-6.svg";
                         temperaturaDescription.textContent = "Nevada Intensa";
                         break;
+                        case 80:
+                            iconAnimado.src = "/multimedia/animated/rainy-4.svg";
+                            temperaturaDescription.textContent = "Lluvias Leves";
+                            break;
+                        case 81:
+                            iconAnimado.src = "/multimedia/animated/rainy-5.svg";
+                            temperaturaDescription.textContent = "Lluvias Moderadas";
+                            break;
+                        case 82:
+                            iconAnimado.src = "/multimedia/animated/rainy-6.svg";
+                            temperaturaDescription.textContent = "Lluvias Fuertes";
+                            break;    
                     case 95:
                         iconAnimado.src = "/multimedia/animated/thunder.svg";
-                        temperaturaDescription.textContent =
-                            "Tormenta Electrica";
+                        temperaturaDescription.textContent ="Tormenta Electrica";
                         break;
 
                     default:
