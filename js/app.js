@@ -1,11 +1,9 @@
-//const moment = require("moment/moment");
-
 
 window.addEventListener(`load`, () => {
     let lon;
     let lat;
 
-    
+
 
     //capturo elementos del DOOM
     // Tarjeta dia_Actual
@@ -18,17 +16,15 @@ window.addEventListener(`load`, () => {
     let temperaturaMax = document.getElementById("max");
     let vientoVelocidad = document.getElementById("viento-velocidad");
     let actual = document.getElementById("dia-actual");
-    let minutoA = document.getElementById("minutos");
     let horaA = document.getElementById("hora");
-    let amanecer=document.getElementById("amanecer");
-    let atardecer=document.getElementById("atardecer");
+    let amanecer = document.getElementById("amanecer");
+    let atardecer = document.getElementById("atardecer");
 
     //Dia_1
     let iconAnimado_1 = document.getElementById("icon-animado-1")
     let temperaturaDescription_1 = document.getElementById("desc-1");
     let temperaturaMin_1 = document.getElementById("min-1");
     let temperaturaMax_1 = document.getElementById("max-1");
-    let Lluvia_1 = document.getElementById("lluvia-1");
     let vientoVelocidad_1 = document.getElementById("viento-velocidad-1");
     let fecha_dia_1 = document.getElementById("dia1");
 
@@ -81,26 +77,21 @@ window.addEventListener(`load`, () => {
             lon = posicion.coords.longitude;
             lat = posicion.coords.latitude;
 
-            const diaActual = (day,semana) => {
-                let fechaActual = new Date();
-                let hora_ = fechaActual.getHours();
-                let minutos_ = fechaActual.getMinutes();
-                let diaSemana = fechaActual.getDay();           
-                // let semana = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+            const diaActual = (day, semana) => {
 
-                actual.textContent = semana[moment(day[0]).day()];  
-                minutoA.textContent = minutos_
-                horaA.textContent = hora_
+                horaA.textContent = moment().format("HH:mm")
+                actual.textContent = semana[moment(day[0]).day()];
+
 
             }
 
-            const dia_actual = (day,semana,sunrise,sunset,data_temp, data_timezone, windspeed, weathercode, sensacion_term_max, t_max, t_min) => {
-               
-                let amanece=moment(sunrise).format('hh:mm');
-                amanecer.textContent=amanece;
+            const dia_actual = (day, semana, sunrise, sunset, data_temp, data_timezone, windspeed, weathercode, sensacion_term_max, t_max, t_min) => {
 
-                let atardece=moment(sunset).format('hh:mm');
-                atardecer.textContent=atardece;
+                let amanece = moment(sunrise).format('HH:mm');
+                amanecer.textContent = amanece;
+
+                let atardece = moment(sunset).format('HH:mm');
+                atardecer.textContent = atardece;
 
                 let temp = Math.round(data_temp);
                 temperaturaValor.textContent = `${temp}º`;
@@ -119,7 +110,7 @@ window.addEventListener(`load`, () => {
                 let tmin = Math.round(t_min);
                 temperaturaMin.textContent = `${tmin}º`;
 
-                diaActual(day,semana);
+                diaActual(day, semana);
 
                 switch (weathercode) {
                     case 0:
@@ -198,18 +189,20 @@ window.addEventListener(`load`, () => {
                 }
 
             }
+
             //arreglo global + objeto data.daily.time ingreso por parametro a la funcion
+
             let semana = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
-            const dia_1 = (code_weather,day,semana, t_max, t_min, windspeed,) => {
+            const dia_1 = (code_weather, day, semana, t_max, t_min, windspeed,) => {
 
                 switch (code_weather) {
                     case 0:
                         iconAnimado_1.src = "/multimedia/animated/day.svg";
-                        temperaturaDescription_1.textContent = "Cielo Despejado"
+                        temperaturaDescription_1.textContent = "Despejado"
                         break;
                     case 1:
-                        iconAnimado_1.src = "/multimedia/animated/cloudy.svg";
-                        temperaturaDescription_1.textContent = "Mayormente despejado"
+                        iconAnimado_1.src = "/multimedia/animated/day.svg";
+                        temperaturaDescription_1.textContent = "Despejado"
                         break;
                     case 2:
                         iconAnimado_1.src = "/multimedia/animated/cloudy.svg";
@@ -232,16 +225,16 @@ window.addEventListener(`load`, () => {
                         temperaturaDescription_1.textContent = "Llovizna intensa"
                         break;
                     case 61:
-                        iconAnimado_1.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_1.textContent = "Lluvia Leve";
+                        iconAnimado_1.src = "/multimedia/animated/rainy-4.svg";
+                        temperaturaDescription_1.textContent = "Lluvias Leves";
                         break;
                     case 63:
-                        iconAnimado_1.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_1.textContent = "Lluvia Moderada";
+                        iconAnimado_1.src = "/multimedia/animated/rainy-5.svg";
+                        temperaturaDescription_1.textContent = "Lluvias Moderadas";
                         break;
                     case 65:
                         iconAnimado_1.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_1.textContent = "Lluvia Fuerte";
+                        temperaturaDescription_1.textContent = "Lluvias Fuertes";
                         break;
                     case 66:
                         iconAnimado_1.src = "/multimedia/animated/rainy-7.svg";
@@ -263,6 +256,18 @@ window.addEventListener(`load`, () => {
                         iconAnimado_1.src = "/multimedia/animated/snowy-6.svg";
                         temperaturaDescription_1.textContent = "Nevada Intensa";
                         break;
+                    case 80:
+                        iconAnimado_1.src = "/multimedia/animated/rainy-4.svg";
+                        temperaturaDescription_1.textContent = "Lluvias Leves";
+                        break;
+                    case 81:
+                        iconAnimado_1.src = "/multimedia/animated/rainy-5.svg";
+                        temperaturaDescription_1.textContent = "Lluvias Moderadas";
+                        break;
+                    case 82:
+                        iconAnimado_1.src = "/multimedia/animated/rainy-6.svg";
+                        temperaturaDescription_1.textContent = "Lluvias Fuertes";
+                        break;
                     case 95:
                         iconAnimado_1.src = "/multimedia/animated/thunder.svg";
                         temperaturaDescription_1.textContent = "Tormenta Electrica";
@@ -271,8 +276,8 @@ window.addEventListener(`load`, () => {
                     default:
                         break;
                 }
-                let dia=semana[moment(day[1]).day()]
-                fecha_dia_1.textContent=dia;     
+                let dia = semana[moment(day[1]).day()]
+                fecha_dia_1.textContent = dia;
 
                 let speed = Math.round(windspeed);
                 vientoVelocidad_1.textContent = `${speed} Km/h`;
@@ -283,20 +288,20 @@ window.addEventListener(`load`, () => {
                 let tmin = Math.round(t_min);
                 temperaturaMin_1.textContent = `${tmin}º`;
 
-               
+
 
             }
 
-            const dia_2 = (code_weather,day,semana, t_max, t_min, windspeed,) => {
+            const dia_2 = (code_weather, day, semana, t_max, t_min, windspeed,) => {
 
                 switch (code_weather) {
                     case 0:
                         iconAnimado_2.src = "/multimedia/animated/day.svg";
-                        temperaturaDescription_2.textContent = "Cielo Despejado"
+                        temperaturaDescription_2.textContent = "Despejado"
                         break;
                     case 1:
-                        iconAnimado_2.src = "/multimedia/animated/cloudy.svg";
-                        temperaturaDescription_2.textContent = "Mayormente despejado"
+                        iconAnimado_2.src = "/multimedia/animated/day.svg";
+                        temperaturaDescription_2.textContent = "Despejado"
                         break;
                     case 2:
                         iconAnimado_2.src = "/multimedia/animated/cloudy.svg";
@@ -319,16 +324,16 @@ window.addEventListener(`load`, () => {
                         temperaturaDescription_2.textContent = "Llovizna intensa"
                         break;
                     case 61:
-                        iconAnimado_2.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_2.textContent = "Lluvia Leve";
+                        iconAnimado_2.src = "/multimedia/animated/rainy-4.svg";
+                        temperaturaDescription_2.textContent = "Lluvias Leves";
                         break;
                     case 63:
-                        iconAnimado_2.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_2.textContent = "Lluvia Moderada";
+                        iconAnimado_2.src = "/multimedia/animated/rainy-5.svg";
+                        temperaturaDescription_2.textContent = "Lluvias Moderadas";
                         break;
                     case 65:
                         iconAnimado_2.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_2.textContent = "Lluvia Fuerte";
+                        temperaturaDescription_2.textContent = "Lluvias Fuertse";
                         break;
                     case 66:
                         iconAnimado_2.src = "/multimedia/animated/rainy-7.svg";
@@ -350,6 +355,18 @@ window.addEventListener(`load`, () => {
                         iconAnimado_2.src = "/multimedia/animated/snowy-6.svg";
                         temperaturaDescription_2.textContent = "Nevada Intensa";
                         break;
+                    case 80:
+                        iconAnimado_2.src = "/multimedia/animated/rainy-4.svg";
+                        temperaturaDescription_2.textContent = "Lluvias Leves";
+                        break;
+                    case 81:
+                        iconAnimado_2.src = "/multimedia/animated/rainy-5.svg";
+                        temperaturaDescription_2.textContent = "Lluvias Moderadas";
+                        break;
+                    case 82:
+                        iconAnimado_2.src = "/multimedia/animated/rainy-6.svg";
+                        temperaturaDescription_2.textContent = "Lluvias Fuertse";
+                        break;
                     case 95:
                         iconAnimado_2.src = "/multimedia/animated/thunder.svg";
                         temperaturaDescription_2.textContent = "Tormenta Electrica";
@@ -358,8 +375,8 @@ window.addEventListener(`load`, () => {
                     default:
                         break;
                 }
-                let dia=semana[moment(day[2]).day()]
-                fecha_dia_2.textContent=dia;  
+                let dia = semana[moment(day[2]).day()]
+                fecha_dia_2.textContent = dia;
 
                 let speed = Math.round(windspeed);
                 vientoVelocidad_2.textContent = `${speed} Km/h`;
@@ -373,20 +390,20 @@ window.addEventListener(`load`, () => {
 
             }
 
-            const dia_3 = (code_weather,day,semana, t_max, t_min, windspeed,) => {
+            const dia_3 = (code_weather, day, semana, t_max, t_min, windspeed,) => {
 
                 switch (code_weather) {
                     case 0:
                         iconAnimado_3.src = "/multimedia/animated/day.svg";
-                        temperaturaDescription_3.textContent = "Cielo Despejado"
+                        temperaturaDescription_3.textContent = "Despejado"
                         break;
                     case 1:
-                        iconAnimado_3.src = "/multimedia/animated/cloudy.svg";
-                        temperaturaDescription_3.textContent = "Mayormente despejado"
+                        iconAnimado_3.src = "/multimedia/animated/day.svg";
+                        temperaturaDescription_3.textContent = "Despejado"
                         break;
                     case 2:
                         iconAnimado_3.src = "/multimedia/animated/cloudy.svg";
-                        temperaturaDescription_3.textContent = "Parcialmente Nublado"
+                        temperaturaDescription_3.textContent = "Parcial Nublado"
                         break;
                     case 3:
                         iconAnimado_3.src = "/multimedia/animated/cloudy.svg";
@@ -405,16 +422,16 @@ window.addEventListener(`load`, () => {
                         temperaturaDescription_3.textContent = "Llovizna intensa"
                         break;
                     case 61:
-                        iconAnimado_3.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_3.textContent = "Lluvia Leve";
+                        iconAnimado_3.src = "/multimedia/animated/rainy-4.svg";
+                        temperaturaDescription_3.textContent = "Lluvias Leves";
                         break;
                     case 63:
-                        iconAnimado_3.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_3.textContent = "Lluvia Moderada";
+                        iconAnimado_3.src = "/multimedia/animated/rainy-5.svg";
+                        temperaturaDescription_3.textContent = "Lluvias Moderadas";
                         break;
                     case 65:
                         iconAnimado_3.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_3.textContent = "Lluvia Fuerte";
+                        temperaturaDescription_3.textContent = "Lluvias Fuertes";
                         break;
                     case 66:
                         iconAnimado_3.src = "/multimedia/animated/rainy-7.svg";
@@ -436,6 +453,18 @@ window.addEventListener(`load`, () => {
                         iconAnimado_3.src = "/multimedia/animated/snowy-6.svg";
                         temperaturaDescription_3.textContent = "Nevada Intensa";
                         break;
+                    case 80:
+                        iconAnimado_3.src = "/multimedia/animated/rainy-4.svg";
+                        temperaturaDescription_3.textContent = "Lluvias Leves";
+                        break;
+                    case 81:
+                        iconAnimado_3.src = "/multimedia/animated/rainy-5.svg";
+                        temperaturaDescription_3.textContent = "Lluvias Moderadas";
+                        break;
+                    case 82:
+                        iconAnimado_3.src = "/multimedia/animated/rainy-6.svg";
+                        temperaturaDescription_3.textContent = "Lluvias Fuertes";
+                        break;
                     case 95:
                         iconAnimado_3.src = "/multimedia/animated/thunder.svg";
                         temperaturaDescription_3.textContent = "Tormenta Electrica";
@@ -444,8 +473,9 @@ window.addEventListener(`load`, () => {
                     default:
                         break;
                 }
-                let dia=semana[moment(day[3]).day()]
-                fecha_dia_3.textContent=dia;  
+
+                let dia = semana[moment(day[3]).day()]
+                fecha_dia_3.textContent = dia;
 
                 let speed = Math.round(windspeed);
                 vientoVelocidad_3.textContent = `${speed} Km/h`;
@@ -459,16 +489,16 @@ window.addEventListener(`load`, () => {
 
             }
 
-            const dia_4 = (code_weather,day,semana, t_max, t_min, windspeed,) => {
+            const dia_4 = (code_weather, day, semana, t_max, t_min, windspeed,) => {
 
                 switch (code_weather) {
                     case 0:
                         iconAnimado_4.src = "/multimedia/animated/day.svg";
-                        temperaturaDescription_4.textContent = "Cielo Despejado"
+                        temperaturaDescription_4.textContent = "Despejado"
                         break;
                     case 1:
-                        iconAnimado_4.src = "/multimedia/animated/cloudy.svg";
-                        temperaturaDescription_4.textContent = "Mayormente despejado"
+                        iconAnimado_4.src = "/multimedia/animated/day.svg";
+                        temperaturaDescription_4.textContent = "Despejado"
                         break;
                     case 2:
                         iconAnimado_4.src = "/multimedia/animated/cloudy.svg";
@@ -491,16 +521,16 @@ window.addEventListener(`load`, () => {
                         temperaturaDescription_4.textContent = "Llovizna intensa"
                         break;
                     case 61:
-                        iconAnimado_4.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_4.textContent = "Lluvia Leve";
+                        iconAnimado_4.src = "/multimedia/animated/rainy-4.svg";
+                        temperaturaDescription_4.textContent = "Lluvias Leves";
                         break;
                     case 63:
-                        iconAnimado_4.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_4.textContent = "Lluvia Moderada";
+                        iconAnimado_4.src = "/multimedia/animated/rainy-5.svg";
+                        temperaturaDescription_4.textContent = "Lluvias Moderadas";
                         break;
                     case 65:
                         iconAnimado_4.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_4.textContent = "Lluvia Fuerte";
+                        temperaturaDescription_4.textContent = "Lluvias Fuertes";
                         break;
                     case 66:
                         iconAnimado_4.src = "/multimedia/animated/rainy-7.svg";
@@ -522,6 +552,18 @@ window.addEventListener(`load`, () => {
                         iconAnimado_4.src = "/multimedia/animated/snowy-6.svg";
                         temperaturaDescription_4.textContent = "Nevada Intensa";
                         break;
+                    case 80:
+                        iconAnimado_4.src = "/multimedia/animated/rainy-4.svg";
+                        temperaturaDescription_4.textContent = "Lluvias Leves";
+                        break;
+                    case 81:
+                        iconAnimado_4.src = "/multimedia/animated/rainy-5.svg";
+                        temperaturaDescription_4.textContent = "Lluvias Moderadas";
+                        break;
+                    case 82:
+                        iconAnimado_4.src = "/multimedia/animated/rainy-6.svg";
+                        temperaturaDescription_4.textContent = "Lluvias Fuertes";
+                        break;
                     case 95:
                         iconAnimado_4.src = "/multimedia/animated/thunder.svg";
                         temperaturaDescription_4.textContent = "Tormenta Electrica";
@@ -530,8 +572,8 @@ window.addEventListener(`load`, () => {
                     default:
                         break;
                 }
-                let dia=semana[moment(day[4]).day()]
-                fecha_dia_4.textContent=dia;  
+                let dia = semana[moment(day[4]).day()]
+                fecha_dia_4.textContent = dia;
 
                 let speed = Math.round(windspeed);
                 vientoVelocidad_4.textContent = `${speed} Km/h`;
@@ -545,16 +587,16 @@ window.addEventListener(`load`, () => {
 
             }
 
-            const dia_5 = (code_weather,day,semana, t_max, t_min, windspeed,) => {
+            const dia_5 = (code_weather, day, semana, t_max, t_min, windspeed,) => {
 
                 switch (code_weather) {
                     case 0:
                         iconAnimado_5.src = "/multimedia/animated/day.svg";
-                        temperaturaDescription_5.textContent = "Cielo Despejado"
+                        temperaturaDescription_5.textContent = "Despejado"
                         break;
                     case 1:
-                        iconAnimado_5.src = "/multimedia/animated/cloudy.svg";
-                        temperaturaDescription_5.textContent = "Mayormente despejado"
+                        iconAnimado_5.src = "/multimedia/animated/day.svg";
+                        temperaturaDescription_5.textContent = "Despejado"
                         break;
                     case 2:
                         iconAnimado_5.src = "/multimedia/animated/cloudy.svg";
@@ -577,16 +619,16 @@ window.addEventListener(`load`, () => {
                         temperaturaDescription_5.textContent = "Llovizna intensa"
                         break;
                     case 61:
-                        iconAnimado_5.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_5.textContent = "Lluvia Leve";
+                        iconAnimado_5.src = "/multimedia/animated/rainy-4.svg";
+                        temperaturaDescription_5.textContent = "Lluvias Leves";
                         break;
                     case 63:
-                        iconAnimado_5.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_5.textContent = "Lluvia Moderada";
+                        iconAnimado_5.src = "/multimedia/animated/rainy-5.svg";
+                        temperaturaDescription_5.textContent = "Lluvias Moderadas";
                         break;
                     case 65:
                         iconAnimado_5.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_5.textContent = "Lluvia Fuerte";
+                        temperaturaDescription_5.textContent = "Lluvias Fuertes";
                         break;
                     case 66:
                         iconAnimado_5.src = "/multimedia/animated/rainy-7.svg";
@@ -608,6 +650,18 @@ window.addEventListener(`load`, () => {
                         iconAnimado_5.src = "/multimedia/animated/snowy-6.svg";
                         temperaturaDescription_5.textContent = "Nevada Intensa";
                         break;
+                    case 80:
+                        iconAnimado_5.src = "/multimedia/animated/rainy-4.svg";
+                        temperaturaDescription_5.textContent = "Lluvias Leves";
+                        break;
+                    case 81:
+                        iconAnimado_5.src = "/multimedia/animated/rainy-5.svg";
+                        temperaturaDescription_5.textContent = "Lluvias Moderadas";
+                        break;
+                    case 82:
+                        iconAnimado_5.src = "/multimedia/animated/rainy-6.svg";
+                        temperaturaDescription_5.textContent = "Lluvias Fuertes";
+                        break;
                     case 95:
                         iconAnimado_5.src = "/multimedia/animated/thunder.svg";
                         temperaturaDescription_5.textContent = "Tormenta Electrica";
@@ -616,8 +670,8 @@ window.addEventListener(`load`, () => {
                     default:
                         break;
                 }
-                let dia=semana[moment(day[5]).day()]
-                fecha_dia_5.textContent=dia;  
+                let dia = semana[moment(day[5]).day()]
+                fecha_dia_5.textContent = dia;
 
                 let speed = Math.round(windspeed);
                 vientoVelocidad_5.textContent = `${speed} Km/h`;
@@ -631,16 +685,16 @@ window.addEventListener(`load`, () => {
 
             }
 
-            const dia_6 = (code_weather,day,semana, t_max, t_min, windspeed,) => {
+            const dia_6 = (code_weather, day, semana, t_max, t_min, windspeed,) => {
 
                 switch (code_weather) {
                     case 0:
                         iconAnimado_6.src = "/multimedia/animated/day.svg";
-                        temperaturaDescription_6.textContent = "Cielo Despejado"
+                        temperaturaDescription_6.textContent = "Despejado"
                         break;
                     case 1:
-                        iconAnimado_6.src = "/multimedia/animated/cloudy.svg";
-                        temperaturaDescription_6.textContent = "Mayormente despejado"
+                        iconAnimado_6.src = "/multimedia/animated/day.svg";
+                        temperaturaDescription_6.textContent = "Despejado"
                         break;
                     case 2:
                         iconAnimado_6.src = "/multimedia/animated/cloudy.svg";
@@ -663,16 +717,16 @@ window.addEventListener(`load`, () => {
                         temperaturaDescription_6.textContent = "Llovizna intensa"
                         break;
                     case 61:
-                        iconAnimado_6.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_6.textContent = "Lluvia Leve";
+                        iconAnimado_6.src = "/multimedia/animated/rainy-4.svg";
+                        temperaturaDescription_6.textContent = "Lluvias Leves";
                         break;
                     case 63:
-                        iconAnimado_6.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_6.textContent = "Lluvia Moderada";
+                        iconAnimado_6.src = "/multimedia/animated/rainy-5.svg";
+                        temperaturaDescription_6.textContent = "Lluvias Moderadas";
                         break;
                     case 65:
                         iconAnimado_6.src = "/multimedia/animated/rainy-6.svg";
-                        temperaturaDescription_6.textContent = "Lluvia Fuerte";
+                        temperaturaDescription_6.textContent = "Lluvias Fuertse";
                         break;
                     case 66:
                         iconAnimado_6.src = "/multimedia/animated/rainy-7.svg";
@@ -694,6 +748,18 @@ window.addEventListener(`load`, () => {
                         iconAnimado_6.src = "/multimedia/animated/snowy-6.svg";
                         temperaturaDescription_6.textContent = "Nevada Intensa";
                         break;
+                    case 80:
+                        iconAnimado_6.src = "/multimedia/animated/rainy-4.svg";
+                        temperaturaDescription_6.textContent = "Lluvias Leves";
+                        break;
+                    case 81:
+                        iconAnimado_6.src = "/multimedia/animated/rainy-5.svg";
+                        temperaturaDescription_6.textContent = "Lluvias Moderadas";
+                        break;
+                    case 82:
+                        iconAnimado_6.src = "/multimedia/animated/rainy-6.svg";
+                        temperaturaDescription_6.textContent = "Lluvias Fuertes";
+                        break;
                     case 95:
                         iconAnimado_6.src = "/multimedia/animated/thunder.svg";
                         temperaturaDescription_6.textContent = "Tormenta Electrica";
@@ -702,8 +768,8 @@ window.addEventListener(`load`, () => {
                     default:
                         break;
                 }
-                let dia=semana[moment(day[6]).day()]
-                fecha_dia_6.textContent=dia;  
+                let dia = semana[moment(day[6]).day()]
+                fecha_dia_6.textContent = dia;
 
                 let speed = Math.round(windspeed);
                 vientoVelocidad_6.textContent = `${speed} Km/h`;
@@ -717,7 +783,7 @@ window.addEventListener(`load`, () => {
 
             }
 
-            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,apparent_temperature,precipitation,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum,windspeed_10m_max,sunrise,sunset&current_weather=true&timezone=auto`;
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,apparent_temperature,precipitation,relativehumidity_2m&current_weather,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum,windspeed_10m_max,sunrise,sunset&current_weather=true&timezone=auto`;
 
             fetch(url)
                 .then((response) => {
@@ -725,19 +791,19 @@ window.addEventListener(`load`, () => {
                 })
                 .then((data) => {
 
-                    dia_actual(data.daily.time,semana,data.daily.sunrise[0],data.daily.sunset[0],data.current_weather.temperature, data.timezone, data.current_weather.windspeed, data.current_weather.weathercode, data.daily.apparent_temperature_max[0], data.daily.temperature_2m_max[0], data.daily.temperature_2m_min[0])
+                    dia_actual(data.daily.time, semana, data.daily.sunrise[0], data.daily.sunset[0], data.current_weather.temperature, data.timezone, data.current_weather.windspeed, data.current_weather.weathercode, data.daily.apparent_temperature_max[0], data.daily.temperature_2m_max[0], data.daily.temperature_2m_min[0])
 
-                    dia_1(data.daily.weathercode[1],data.daily.time,semana, data.daily.temperature_2m_max[1], data.daily.temperature_2m_min[1], data.daily.windspeed_10m_max[1], data.daily.precipitation_sum[1])
+                    dia_1(data.daily.weathercode[1], data.daily.time, semana, data.daily.temperature_2m_max[1], data.daily.temperature_2m_min[1], data.daily.windspeed_10m_max[1], data.daily.precipitation_sum[1])
 
-                    dia_2(data.daily.weathercode[2],data.daily.time,semana, data.daily.temperature_2m_max[2], data.daily.temperature_2m_min[2], data.daily.windspeed_10m_max[2], data.daily.precipitation_sum[2])
+                    dia_2(data.daily.weathercode[2], data.daily.time, semana, data.daily.temperature_2m_max[2], data.daily.temperature_2m_min[2], data.daily.windspeed_10m_max[2], data.daily.precipitation_sum[2])
 
-                    dia_3(data.daily.weathercode[3],data.daily.time,semana, data.daily.temperature_2m_max[3], data.daily.temperature_2m_min[3], data.daily.windspeed_10m_max[3], data.daily.precipitation_sum[3])
+                    dia_3(data.daily.weathercode[3], data.daily.time, semana, data.daily.temperature_2m_max[3], data.daily.temperature_2m_min[3], data.daily.windspeed_10m_max[3], data.daily.precipitation_sum[3])
 
-                    dia_4(data.daily.weathercode[4],data.daily.time,semana, data.daily.temperature_2m_max[4], data.daily.temperature_2m_min[4], data.daily.windspeed_10m_max[4], data.daily.precipitation_sum[4])
+                    dia_4(data.daily.weathercode[4], data.daily.time, semana, data.daily.temperature_2m_max[4], data.daily.temperature_2m_min[4], data.daily.windspeed_10m_max[4], data.daily.precipitation_sum[4])
 
-                    dia_5(data.daily.weathercode[5],data.daily.time,semana, data.daily.temperature_2m_max[5], data.daily.temperature_2m_min[5], data.daily.windspeed_10m_max[5], data.daily.precipitation_sum[5])
+                    dia_5(data.daily.weathercode[5], data.daily.time, semana, data.daily.temperature_2m_max[5], data.daily.temperature_2m_min[5], data.daily.windspeed_10m_max[5], data.daily.precipitation_sum[5])
 
-                    dia_6(data.daily.weathercode[6],data.daily.time,semana, data.daily.temperature_2m_max[6], data.daily.temperature_2m_min[6], data.daily.windspeed_10m_max[6], data.daily.precipitation_sum[6])
+                    dia_6(data.daily.weathercode[6], data.daily.time, semana, data.daily.temperature_2m_max[6], data.daily.temperature_2m_min[6], data.daily.windspeed_10m_max[6], data.daily.precipitation_sum[6])
 
                 })
                 .catch((error) => {
